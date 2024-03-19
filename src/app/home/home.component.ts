@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FoodService } from '../services/food/food.service';
 import { OnInit } from '@angular/core';
+import { Food } from '../shared/models/Food.model';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { OnInit } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  foods: String[] = []
+  foods: Food[] = []
 
   // # for private modifier
   foodService = inject(FoodService);
