@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FoodService } from '../services/food/food.service';
-import { OnInit } from '@angular/core';
 import { Food } from '../shared/models/Food.model';
+import { StarRatingModule } from 'angular-star-rating';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [StarRatingModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

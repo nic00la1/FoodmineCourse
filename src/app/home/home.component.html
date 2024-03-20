@@ -10,6 +10,13 @@
                     <span class="favorite {{food.favorite ? '' : 'not'}}">
                         ❤️
                     </span>
+                    <star-rating 
+                        [value]="food.stars"
+                        [totalstars]="5"
+                        checkedcolor="red"
+                        uncheckedcolor="black"
+                        size="24px"
+                        [readOnly]="true"></star-rating>
                 </div>
             </a>
         </li>
