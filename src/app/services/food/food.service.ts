@@ -29,7 +29,7 @@ export class FoodService {
         favorite: true,
         stars: 4.7,
         imageUrl: 'assets/images/foods/food-2.jpg',
-        origins: ['persia', 'middle east' ,'china'],
+        origins: [' persia ', ' middle east ' ,'china '],
         cookTime: '20-30'
       },
       {
@@ -40,7 +40,7 @@ export class FoodService {
         favorite: false,
         stars: 3.5,
         imageUrl: 'assets/images/foods/food-3.jpg',
-        origins: ['germany', 'us'],
+        origins: [' germany ', ' us '],
         cookTime: '10-15'
       },
       {
@@ -51,18 +51,18 @@ export class FoodService {
         favorite: true,
         stars: 3.3,
         imageUrl: 'assets/images/foods/food-4.jpg',
-        origins: ['belgium', 'france'],
+        origins: [' belgium ', ' france '],
         cookTime: '15-20'
       },
       {
         id: 5,
         name: 'Chicken Soup',
         price: 11,
-        tags: ['SlowFood', 'Soup'],
+        tags: [' SlowFood ', ' Soup '],
         favorite: false,
         stars: 5.0,
         imageUrl: 'assets/images/foods/food-5.jpg',
-        origins: ['poland', 'asia'],
+        origins: [' poland ', ' asia '],
         cookTime: '40-50'
       },
       {
@@ -73,7 +73,7 @@ export class FoodService {
         favorite: false,
         stars: 4.0,
         imageUrl: 'assets/images/foods/food-6.jpg',
-        origins: ['italy'],
+        origins: [' italy '],
         cookTime: '40-50'
       },
     ]

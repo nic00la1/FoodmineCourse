@@ -10,13 +10,28 @@
                     <span class="favorite {{food.favorite ? '' : 'not'}}">
                         ❤️
                     </span>
-                    <star-rating 
-                        [value]="food.stars"
-                        [totalstars]="5"
-                        checkedcolor="red"
-                        uncheckedcolor="black"
-                        size="24px"
-                        [readOnly]="true"></star-rating>
+                    
+                <!-- Stars rating-->
+
+                <div class="product-item-footer">
+                    <div class="origins">
+                        @for (origin of food.origins; track $index) 
+                        {
+                            <span>{{origin}}</span>
+                        }
+                    </div>
+                    <div class="cook-time">
+                        <span>🕑</span>
+                        {{food.cookTime}}
+                    </div>
+                    <div class="price">
+                        <span>💰</span>
+                        ${{food.price}}
+                        </div> 
+                </div>
+
+
+
                 </div>
             </a>
         </li>
