@@ -1,15 +1,15 @@
 import { CartItem } from './../../../shared/models/CartItem.model';
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from '../../../services/cart/cart.service';
 import { Cart } from '../../../shared/models/Cart.model';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FoodService } from '../../../services/food/food.service';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NotFoundComponent],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.css'
 })
