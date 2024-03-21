@@ -4,6 +4,7 @@ import { Food } from '../../../shared/models/Food.model';
 import { StarRatingComponent } from '../../partials/star-rating/star-rating.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
