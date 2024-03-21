@@ -9,7 +9,7 @@
 }
 
 @if ("foodPageTags") {
-    <div class="tags">
+    <div class="tags" [style.justifyContent]="justifyContent">
         @for (tagName of foodPageTags; track $index) {
             <a routerLink="/tag/{{tagName}}" >
                 {{ tagName }}
