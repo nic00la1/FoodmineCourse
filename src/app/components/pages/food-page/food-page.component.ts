@@ -6,11 +6,12 @@ import { FoodService } from '../../../services/food/food.service';
 import { StarRatingComponent } from '../../partials/star-rating/star-rating.component';
 import { TagsComponent } from '../../partials/tags/tags.component';
 import { CommonModule } from '@angular/common';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-food-page',
   standalone: true,
-  imports: [StarRatingComponent, TagsComponent, CommonModule],
+  imports: [StarRatingComponent, TagsComponent, CommonModule, NotFoundComponent],
   templateUrl: './food-page.component.html',
   styleUrl: './food-page.component.css'
 })
