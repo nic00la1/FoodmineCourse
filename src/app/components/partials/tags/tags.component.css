@@ -1,0 +1,18 @@
+div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
+div a {
+    margin: .3rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
