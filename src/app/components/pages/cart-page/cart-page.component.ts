@@ -4,6 +4,7 @@ import { CartService } from '../../../services/cart/cart.service';
 import { Cart } from '../../../shared/models/Cart.model';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FoodService } from '../../../services/food/food.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -15,7 +16,11 @@ import { CommonModule } from '@angular/common';
 export class CartPageComponent {
   cart!: Cart;
   
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private foodService: FoodService) {
+    let foods = foodService.getAll();
+    cartService.addToCart(foods[1]);
+    cartService.addToCart(foods[3]);
+    cartService.addToCart(foods[4]);
     this.setCart();
   }
 
