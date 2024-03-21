@@ -1,7 +1,7 @@
 <ul>
   @for (food of foods; track $index) {
   <li>
-    <a>
+    <a routerLink="/food/{{food.id}}">
       <img src="{{ food.imageUrl }}" alt="{{ food }}" />
       <div class="content">
         <div class="name">
