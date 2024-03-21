@@ -7,3 +7,13 @@
         }
     </div>
 }
+
+@if ("foodPageTags") {
+    <div class="tags">
+        @for (tagName of foodPageTags; track $index) {
+            <a routerLink="/tag/{{tagName}}" >
+                {{ tagName }}
+            </a>
+        }
+    </div>
+}
