@@ -2,11 +2,13 @@ import { CartItem } from './../../../shared/models/CartItem.model';
 import { Component, Inject } from '@angular/core';
 import { CartService } from '../../../services/cart/cart.service';
 import { Cart } from '../../../shared/models/Cart.model';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, CommonModule],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.css'
 })
