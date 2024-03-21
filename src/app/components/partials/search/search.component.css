@@ -1,0 +1,37 @@
+div {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+div input {
+    border-radius: 10rem 0 0 10rem;
+    border: 1px solid #e0e0e0;
+    padding: 1rem 2rem;
+    height: 3rem;
+    width: 20rem;
+    background-color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+}
+
+div button {
+    color: white;
+    background-color: #e72929;
+    opacity: .8;
+    border: 1px solid #e0e0e0;
+    border-radius: 0 10rem 10rem 0;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+}
+
+div button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
