@@ -4,7 +4,6 @@ import { Food } from '../../../shared/models/Food.model';
 import { StarRatingComponent } from '../../partials/star-rating/star-rating.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -19,15 +18,18 @@ export class HomeComponent {
   // # for private modifier
   foodService = inject(FoodService);
   route = inject(ActivatedRoute);
-  
+
   ngOnInit(): void {
     
     this.route.params.subscribe(params => {
-      if (params['searchTerm'])
-        this.foods = this.foodService.getAll().filter(food => 
-          food.name.toLowerCase().includes(params['searchTerm'].toLowerCase()));
-      else
-        this.foods = this.foodService.getAll();
+      if (params['searchTerm']){ 
+        this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']); // get foods by search term
+      }
+      else if (params['tag']) {
+        this.foods = this.foodService.getAllFoodsByTag(params['tag']); // get foods by tag
+      }
+      else 
+        this.foods = this.foodService.getAll(); // get all foods
     
     })
   }
