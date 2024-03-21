@@ -1,6 +1,7 @@
+import { CartService } from './../../../services/cart/cart.service';
 import { Component, inject } from '@angular/core';
 import { Food } from '../../../shared/models/Food.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food/food.service';
 import { StarRatingComponent } from '../../partials/star-rating/star-rating.component';
 import { TagsComponent } from '../../partials/tags/tags.component';
@@ -18,6 +19,8 @@ export class FoodPageComponent {
 
   activatedRoute = inject(ActivatedRoute);
   foodService = inject(FoodService);
+  cartService = inject(CartService);
+  router = inject(Router);
 
   constructor() { // get food by id
     this.activatedRoute.params.subscribe((params) => {
@@ -28,6 +31,10 @@ export class FoodPageComponent {
  
 
   ngOnInit(): void {
-    // get food by id
+  }
+
+  addToCart() {
+    this.cartService.addToCart(this.food);
+    this.router.navigate(['/cart-page']);
   }
 }

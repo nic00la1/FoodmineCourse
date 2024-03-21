@@ -1,0 +1,9 @@
+<ul>
+    @for (cartItem of cart.items; track $index) {
+        <li>
+            <div>
+                <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+            </div>
+        </li>
+    }
+</ul>
