@@ -23,7 +23,7 @@ export class FoodService {
       },
       {
         id: 2,
-        name: 'Meatball',
+        name: 'Beef Meatball',
         price: 20,
         tags: ['Lunch','SlowFood'],
         favorite: true,
