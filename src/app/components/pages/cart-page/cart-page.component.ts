@@ -19,10 +19,6 @@ export class CartPageComponent {
     this.setCart();
   }
 
-  setCart() {
-    this.cart = this.cartService.getCart(); 
-  }
-
   removeFromCart(cartItem: CartItem) {
     this.cartService.removeFromCart(cartItem.food.id);
     this.setCart(); // Update the cart (refresh)
@@ -33,4 +29,9 @@ export class CartPageComponent {
     this.cartService.changeQuantity(cartItem.food.id, quantity);
     this.setCart(); // Update the cart (refresh)
   }
+
+  setCart() {
+    this.cart = this.cartService.getCart(); 
+  }
+
 }

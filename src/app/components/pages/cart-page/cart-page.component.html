@@ -1,34 +1,44 @@
 <ul>
-    @for (cartItem of cart.items; track $index) {
-        <li>
-            <div>
-                <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
-            </div>
-            <div>
-                <a routerLink="/food/{{cartItem.food.id}}">
-                    {{cartItem.food.name}}
-                </a>
-            </div>  
+  @for (cartItem of cart.items; track $index) {
+  <li>
+    <div>
+      <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name" />
+    </div>
+    <div>
+      <a routerLink="/food/{{ cartItem.food.id }}">
+        {{ cartItem.food.name }}
+      </a>
+    </div>
 
-            <div>
-                <select #quantitySelect (change)="changeQuantity(cartItem, quantitySelect.value)">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
+    <div>
+      <select
+        #quantitySelect
+        (change)="changeQuantity(cartItem, quantitySelect.value)"
+      >
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
 
-            <div>
-                {{cartItem.food.price | currency}}
-            </div>
+    <div>
+        {{ cartItem.food.price * cartItem.quantity | currency }}
+    </div>
 
-            <div>
-                <button class="btn btn-danger" (click)="removeFromCart(cartItem)">
-                    Remove
-                </button> 
-            </div>  
-        </li>
-    }
+    <div>
+      <button class="btn btn-danger" (click)="removeFromCart(cartItem)">
+        Remove
+      </button>
+    </div>
+  </li>
+  }
 </ul>
+
+<div class="checkout">
+  <div>
+    <div class="foods-count">Amount of the food:  <strong>{{cart.items.length}}</strong></div>
+    <div class="total-price">Total price: <strong>{{cart.totalPrice | currency}}</strong></div>
+  </div>
+</div>
