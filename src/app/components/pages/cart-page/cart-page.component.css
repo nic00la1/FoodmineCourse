@@ -66,3 +66,40 @@ ul .remove-button:hover {
     opacity: 1;
     cursor: pointer;
 }
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    height: 20rem;
+    border: 1px solid #ffbbbb;
+    border-radius: 1rem;
+    margin: .5rem;
+    padding: .5rem;
+}
+
+.checkout > div {
+    font-size: 1.4rem;
+    margin: 1rem;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.checkout .foods-count {
+    margin-bottom: 1.5rem;
+}
+
+.checkout .foods-count::before {
+    content: 'Count: ';
+    color: gray;
+}
+
+.checkout .total-price::before {
+   content: 'Price: ';
+   color: gray;
+}

@@ -16,11 +16,7 @@ import { FoodService } from '../../../services/food/food.service';
 export class CartPageComponent {
   cart!: Cart;
   
-  constructor(private cartService: CartService, private foodService: FoodService) {
-    let foods = foodService.getAll();
-    cartService.addToCart(foods[1]);
-    cartService.addToCart(foods[3]);
-    cartService.addToCart(foods[4]);
+  constructor(private cartService: CartService) {
     this.setCart();
   }
 
