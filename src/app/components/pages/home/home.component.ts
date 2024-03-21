@@ -4,11 +4,13 @@ import { Food } from '../../../shared/models/Food.model';
 import { StarRatingComponent } from '../../partials/star-rating/star-rating.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { SearchComponent } from '../../partials/search/search.component';
+import { TagsComponent } from '../../partials/tags/tags.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [StarRatingComponent, CommonModule, RouterModule],
+  imports: [StarRatingComponent, CommonModule, RouterModule, SearchComponent, TagsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
