@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../../../services/cart/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +10,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  cartQuantity = 0;
 
+  cartService = inject(CartService)
+
+  constructor() {
+    this.cartService.getCartObservable().subscribe((newCart) => {
+      this.cartQuantity = newCart.totalCount;
+    })
+  }
 }
