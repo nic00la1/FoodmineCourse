@@ -1,6 +1,4 @@
 export class Tag {
-   constructor(
-         public name: string,
-         public count: number
-   ){}
+      name! : string;
+      count! : number;
 }

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { sample_foods } from "./data";
 
 const app = express();
 // localhost:4200 is the default port for Angular
@@ -14,7 +15,7 @@ app.use(
 );
 
 app.get("/api/foods", (req, res) => {
-    res.send("Hello World!");
+    res.send(sample_foods);
 })
 
 const port = 5000; // default port to listen

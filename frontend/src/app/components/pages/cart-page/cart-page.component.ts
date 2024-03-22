@@ -17,22 +17,18 @@ export class CartPageComponent {
   cart!: Cart;
   
   constructor(private cartService: CartService) {
-    this.setCart();
+    this.cartService.getCartObservable().subscribe((cart) => {
+      this.cart = cart;
+    });
   }
 
   removeFromCart(cartItem: CartItem) {
     this.cartService.removeFromCart(cartItem.food.id);
-    this.setCart(); // Update the cart (refresh)
   }
 
   changeQuantity(cartItem: CartItem, quantityInString: string) {
     const quantity = parseInt(quantityInString);
     this.cartService.changeQuantity(cartItem.food.id, quantity);
-    this.setCart(); // Update the cart (refresh)
-  }
-
-  setCart() {
-    this.cart = this.cartService.getCart(); 
   }
 
 }
