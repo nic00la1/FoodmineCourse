@@ -3,9 +3,12 @@
         <a routerLink="/" class="logo">Food Mine!</a>
         <nav>
             <ul>
-                <li>
-                    <a routerLink="/login">Login</a>
-                </li>
+                @if (!user.token) {
+                    <li>
+                        <a routerLink="/login">Login</a>
+                    </li>
+                }
+                
                 <li class="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>
                     <div class="menu">
