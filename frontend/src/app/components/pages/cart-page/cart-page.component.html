@@ -1,3 +1,4 @@
+<app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
 <app-not-found [visible]="!cart || cart.items.length <= 0"
 notFoundMessage="Cart Page Is Empty!"
 resetLinkText="Go To Home Page">
@@ -19,6 +20,7 @@ resetLinkText="Go To Home Page">
       <div>
         <select
           #quantitySelect
+          [value]="cartItem.quantity"
           (change)="changeQuantity(cartItem, quantitySelect.value)"
         >
           <option>1</option>
@@ -30,7 +32,7 @@ resetLinkText="Go To Home Page">
       </div>
 
       <div>
-        {{ cartItem.food.price * cartItem.quantity | currency }}
+        {{ cartItem.price| currency }}
       </div>
 
       <div>
@@ -44,9 +46,11 @@ resetLinkText="Go To Home Page">
 
   <div class="checkout">
     <div>
-      <div class="foods-count">{{ cart.items.length }}</div>
+      <div class="foods-count">{{ cart.totalCount }}</div>
       <div class="total-price">{{ cart.totalPrice | currency }}</div>
     </div>
+
+    <a routerLink="/checkout">Proceed to Checkout</a>
   </div>
 </div>
 }

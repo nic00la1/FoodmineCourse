@@ -5,11 +5,12 @@ import { Cart } from '../../../shared/models/Cart.model';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from '../../partials/not-found/not-found.component';
+import { TitleComponent } from '../../partials/title/title.component';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, NotFoundComponent],
+  imports: [RouterModule, CommonModule, NotFoundComponent, TitleComponent],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.css'
 })
