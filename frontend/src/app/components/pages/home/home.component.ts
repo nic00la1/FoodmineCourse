@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SearchComponent } from '../../partials/search/search.component';
 import { TagsComponent } from '../../partials/tags/tags.component';
 import { NotFoundComponent } from '../../partials/not-found/not-found.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,21 +21,23 @@ export class HomeComponent {
 
   // # for private modifier
   foodService = inject(FoodService);
-  route = inject(ActivatedRoute);
+  activatedRoute = inject(ActivatedRoute);
 
-  ngOnInit(): void {
-    
-    this.route.params.subscribe(params => {
-      if (params['searchTerm']){ 
-        this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']); // get foods by search term
-      }
-      else if (params['tag']) {
-        this.foods = this.foodService.getAllFoodsByTag(params['tag']); // get foods by tag
-      }
-      else 
-        this.foods = this.foodService.getAll(); // get all foods
-    
+  constructor() {
+    let foodsObservable : Observable<Food[]>;
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['searchTerm'])
+        foodsObservable = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
+      else if (params['tag'])
+        foodsObservable = this.foodService.getAllFoodsByTag(params['tag']);
+      else
+        foodsObservable = this.foodService.getAll();
+
+        foodsObservable.subscribe((serverFoods) => {
+          this.foods = serverFoods;
+        })
     })
   }
+  
 
 }
