@@ -22,6 +22,10 @@ export class UserService {
   }
 
   login(userLogin: IUserLogin): Observable<User> {
+  // Convert email to lowercase
+  userLogin.email = userLogin.email.toLowerCase();
+
+    
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
