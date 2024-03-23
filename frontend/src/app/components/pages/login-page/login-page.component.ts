@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TitleComponent } from '../../partials/title/title.component';
 import { UserService } from '../../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InputContainerComponent } from '../../partials/input-container/input-container.component';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [TitleComponent, ReactiveFormsModule],
+  imports: [TitleComponent, ReactiveFormsModule, InputContainerComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
