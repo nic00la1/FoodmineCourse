@@ -16,6 +16,12 @@
         label="Password"/>
 
       <default-button text="Login"/>
+
+      <div class="register">
+        <span>New user?&nbsp;</span>
+        <a routerLink="/register" [queryParams]="{returnUrl: returnUrl}">Register Here</a>
+      </div>
+
     </form>
   </div>
 </div>

@@ -1,8 +1,41 @@
 <div class="my-container">
-    <div class="details">
-        <app-title title="Register"/>
-        <form>
-            
-        </form>
-    </div>
+  <div class="details">
+    <app-title title="Register" />
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <text-input
+        [control]="fc['name']"
+        [showErrorsWhen]="isSubmitted"
+        label="Name"/>
+
+        <text-input
+        [control]="fc['email']"
+        [showErrorsWhen]="isSubmitted"
+        label="Email"
+        type="email"/>
+        
+        <text-input
+        [control]="fc['password']"
+        [showErrorsWhen]="isSubmitted"
+        label="Password"
+        type="password"/>
+
+        <text-input
+        [control]="fc['confirmPassword']"
+        [showErrorsWhen]="isSubmitted"
+        label="Confirm Password"
+        type="password"/>
+
+        <text-input
+        [control]="fc['address']"
+        [showErrorsWhen]="isSubmitted"
+        label="Address"/>
+
+        <default-button text="Register"/>
+
+        <div class="login">
+            <span>Already an user? &nbsp;</span>
+            <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}">Login Here</a>
+        </div>
+    </form>
+  </div>
 </div>

@@ -1,15 +1,17 @@
 import { PasswordsMatchValidator } from './../../../shared/validators/password_match_validator';
 import { Component, inject } from '@angular/core';
 import { TitleComponent } from '../../partials/title/title.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { IUserRegister } from '../../../shared/interfaces/IUserRegister';
+import { TextInputComponent } from '../../partials/text-input/text-input.component';
+import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [TitleComponent],
+  imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, DefaultButtonComponent, RouterLink],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css',
 })
