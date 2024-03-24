@@ -31,6 +31,6 @@ export class StarRatingComponent {
   : this.stars >= previousHalf
   ? 'star-half'
   : 'star-empty';
-  return `assets/stars/${imageName}.svg`;
+  return `/assets/images/stars/${imageName}.svg`;
  }
 }
