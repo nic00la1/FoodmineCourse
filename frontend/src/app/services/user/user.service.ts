@@ -1,9 +1,10 @@
+import { IUserRegister } from './../../shared/interfaces/IUserRegister';
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IUserLogin } from '../../shared/interfaces/IUserLogin';
 import { User } from '../../shared/models/User.model';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL } from '../../shared/constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 
 const USER_KEY = 'User';
@@ -11,7 +12,9 @@ const USER_KEY = 'User';
   providedIn: 'root',
 })
 export class UserService {
-  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
+  private userSubject = new BehaviorSubject<User>(
+    this.getUserFromLocalStorage()
+  );
   public userObservable: Observable<User>;
 
   http = inject(HttpClient);
@@ -22,10 +25,9 @@ export class UserService {
   }
 
   login(userLogin: IUserLogin): Observable<User> {
-  // Convert email to lowercase
-  userLogin.email = userLogin.email.toLowerCase();
+    // Convert email to lowercase
+    userLogin.email = userLogin.email.toLowerCase();
 
-    
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
@@ -43,6 +45,24 @@ export class UserService {
     );
   }
 
+  register(userRegister: IUserRegister): Observable<User> {
+    return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+            `Welcome to the Foodmine ${user.name}!`,
+            `Register Successful!`
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Register Failed!');
+        },
+      })
+    );
+  }
+
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
@@ -53,7 +73,7 @@ export class UserService {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  private getUserFromLocalStorage() : User {
+  private getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
