@@ -9,11 +9,9 @@ import { LoadingService } from '../../../services/loading/loading.service';
   styleUrl: './loading.component.css'
 })
 export class LoadingComponent {
-  isLoading !: boolean;
-  loadingService = inject(LoadingService)
-
-  constructor() {
-    this.loadingService.isLoading.subscribe((isLoading) => {
+  isLoading!: boolean;
+  constructor(loadingService: LoadingService) {
+    loadingService.isLoading.subscribe((isLoading) => {
       this.isLoading = isLoading;
     });
   }
