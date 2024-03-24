@@ -29,8 +29,8 @@ export class RegisterPageComponent {
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', Validators.required],
       address: ['', [Validators.required, Validators.minLength(10)]],
+    },{
+      validators: PasswordsMatchValidator('password', 'confirmPassword')
     });
-
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 }
