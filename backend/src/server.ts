@@ -22,5 +22,5 @@ app.use("/api/users", userRouter);
 
 const port = 5000; // default port to listen
 app.listen(port, () => {
-  console.log("server started at http://localhost:" + port);
+  console.log("Website served at http://localhost:" + port);
 });
