@@ -1,3 +1,4 @@
+import { PasswordsMatchValidator } from './../../../shared/validators/password_match_validator';
 import { Component, inject } from '@angular/core';
 import { TitleComponent } from '../../partials/title/title.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,5 +33,8 @@ export class RegisterPageComponent {
     },{
       validators: PasswordsMatchValidator('password', 'confirmPassword')
     });
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
   }
+
 }
