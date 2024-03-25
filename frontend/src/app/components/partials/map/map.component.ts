@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, inject } from '@angular/core';
 import { LatLng, LatLngExpression, LatLngTuple, LeafletMouseEvent, Map, Marker, icon, map, marker, tileLayer } from 'leaflet';
 import { LocationService } from '../../../services/location/location.service';
+import { Order } from '../../../shared/models/Order.model';
 
 @Component({
   selector: 'map',
@@ -10,6 +11,9 @@ import { LocationService } from '../../../services/location/location.service';
   styleUrl: './map.component.css'
 })
 export class MapComponent {
+
+  @Input()
+  order !: Order;
 
   private readonly MARKER_ZOOM_LEVEL = 16;
   private readonly MARKER_ICON = icon({
@@ -54,6 +58,7 @@ export class MapComponent {
   }
 
   setMarker(latlng: LatLngExpression) {
+    this.addressLatLng = latlng as LatLng;
     if (this.currentMarker) {
       this.currentMarker.setLatLng(latlng);
       return;
@@ -63,5 +68,16 @@ export class MapComponent {
       draggable: true,
       icon: this.MARKER_ICON
     }).addTo(this.map);
+
+    this.currentMarker.on('dragend', () => {
+      this.addressLatLng = this.currentMarker.getLatLng();
+    });
+  }
+
+  set addressLatLng(latlng : LatLng) { // MongoDB only accepts 8 decimal places
+    latlng.lat = parseFloat(latlng.lat.toFixed(8));
+    latlng.lng = parseFloat(latlng.lng.toFixed(8));
+    this.order.addressLatLng = latlng;
+    console.log(this.order.addressLatLng);
   }
 }
