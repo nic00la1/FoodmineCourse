@@ -7,4 +7,15 @@
     </form>
     <order-item-list [order]="order" />
   </div>
+  <div class="map">
+    <app-title title="Choose Your Address On Map" fontSize="1.6rem" />
+  </div>
+
+  <div class="buttons-container">
+    <div class="buttons">
+      <button (click)="createOrder()">
+        Go To Payment
+      </button>
+    </div>
+  </div>
 </div>
