@@ -1,14 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { Order } from '../../../shared/models/Order.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CartService } from '../../../services/cart/cart.service';
 import { UserService } from '../../../services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { TitleComponent } from '../../partials/title/title.component';
+import { TextInputComponent } from '../../partials/text-input/text-input.component';
+import { OrderItemListComponent } from '../../partials/order-item-list/order-item-list.component';
 
 @Component({
   selector: 'app-checkout-page',
   standalone: true,
-  imports: [],
+  imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, OrderItemListComponent],
   templateUrl: './checkout-page.component.html',
   styleUrl: './checkout-page.component.css'
 })

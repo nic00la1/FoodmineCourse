@@ -1,1 +1,10 @@
-<p>checkout-page works!</p>
+<div class="my-container">
+  <div class="content">
+    <app-title title="Order Form" fontSize="1.6rem" />
+    <form [formGroup]="checkoutForm">
+      <text-input [control]="fc['name']" label="Name" />
+      <text-input [control]="fc['address']" label="Address" />
+    </form>
+    <order-item-list [order]="order" />
+  </div>
+</div>
