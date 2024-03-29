@@ -7,6 +7,7 @@ import foodRouter from "./routers/food.router";
 import userRouter from "./routers/user.router";
 import orderRouter from "./routers/order.router";
 import { dbConnect } from "./configs/database.config";
+import path from "path";
 dbConnect();
 
 const app = express();
@@ -17,6 +18,9 @@ app.use(
     origin: "http://localhost:4200",
   })
 );
+
+// Serve Angular files
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
