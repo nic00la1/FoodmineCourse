@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { TitleComponent } from '../../partials/title/title.component';
 import { OrderItemListComponent } from '../../partials/order-item-list/order-item-list.component';
 import { MapComponent } from '../../partials/map/map.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { PaypalButtonComponent } from '../../partials/paypal-button/paypal-button.component';
 
 @Component({
   selector: 'app-payment-page',
   standalone: true,
-  imports: [TitleComponent, OrderItemListComponent, MapComponent],
+  imports: [TitleComponent, OrderItemListComponent, MapComponent, PaypalButtonComponent],
   templateUrl: './payment-page.component.html',
   styleUrl: './payment-page.component.css'
 })
