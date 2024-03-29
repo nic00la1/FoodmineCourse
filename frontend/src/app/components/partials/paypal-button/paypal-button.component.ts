@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, inject } from '@angular/core';
 import { Order } from '../../../shared/models/Order.model';
 import { OrderService } from '../../../services/order/order.service';
 import { CartService } from '../../../services/cart/cart.service';
@@ -18,6 +18,9 @@ declare var paypal: any;
 export class PaypalButtonComponent {
   @Input()
   order !: Order;
+
+  @ViewChild('paypal', {static: true})
+  paypalElement!: ElementRef;
 
   private orderService = inject(OrderService);
   private cartService = inject(CartService);
