@@ -1,6 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
 import { Order } from '../../../shared/models/Order.model';
 import { OrderService } from '../../../services/order/order.service';
+import { CartService } from '../../../services/cart/cart.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 // window.paypal
 declare var paypal: any;
@@ -17,6 +20,11 @@ export class PaypalButtonComponent {
   order !: Order;
 
   private orderService = inject(OrderService);
+  private cartService = inject(CartService);
+  private router = inject(Router);
+  private toastrService = inject(ToastrService);
+  
+
 
   ngOnInit(): void {
     const self = this
