@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TitleComponent } from '../../partials/title/title.component';
 import { OrderItemListComponent } from '../../partials/order-item-list/order-item-list.component';
 import { MapComponent } from '../../partials/map/map.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-payment-page',

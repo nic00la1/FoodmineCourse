@@ -1,7 +1,9 @@
 <div class="my-container">
-    <button class="find-location" (click)="findMyLocation()">
-        Find My location
-    </button>
+    @if (!readonly) {
+        <button class="find-location" (click)="findMyLocation()">
+            Find My location
+        </button>
+    }
     <div class="map" #map>
         
     </div>
