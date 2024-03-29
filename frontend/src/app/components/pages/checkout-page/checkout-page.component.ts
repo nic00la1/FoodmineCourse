@@ -8,6 +8,8 @@ import { TitleComponent } from '../../partials/title/title.component';
 import { TextInputComponent } from '../../partials/text-input/text-input.component';
 import { OrderItemListComponent } from '../../partials/order-item-list/order-item-list.component';
 import { MapComponent } from '../../partials/map/map.component';
+import { OrderService } from '../../../services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-page',
@@ -24,6 +26,8 @@ export class CheckoutPageComponent {
   private formBuilder = inject(FormBuilder);
   private userService = inject(UserService);
   private toastrService = inject(ToastrService);
+  private orderService = inject(OrderService);
+  private router = inject(Router);
 
   constructor() {
     const cart = this.cartService.getCart();
@@ -49,9 +53,21 @@ export class CheckoutPageComponent {
       return;
     }
 
+    if (!this.order.addressLatLng) {
+      this.toastrService.warning('Please select your location on the map', 'Location');
+      return;
+    }
+
     this.order.name = this.fc['name'].value;
     this.order.address = this.fc['address'].value;
 
-    console.log(this.order);
+    this.orderService.create(this.order).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/payment');
+      },
+      error:(errorResponse) => {
+        this.toastrService.error(errorResponse.error, 'Cart');
+      }
+    });
   }
 }

@@ -42,7 +42,7 @@ const orderSchema = new Schema<Order>({
   name: { type: String, required: true },
   address: { type: String, required: true },
   addressLatLng: { type: LatLngSchema, required: true },
-  paymentId: { type: String, required: true },
+  paymentId: { type: String},
   items: { type: [OrderItemSchema], required: true },
   status: { type: String, default: OrderStatus.NEW },
   user: { type: Schema.Types.ObjectId, required: true },
