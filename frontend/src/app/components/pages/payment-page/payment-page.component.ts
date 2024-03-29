@@ -22,6 +22,7 @@ export class PaymentPageComponent {
     this.orderService.getNewOrderForCurrentUser().subscribe({
       next: (order) => {
         this.order = order;
+        this.order.totalPrice = order.items.reduce((total, item) => total + Number(item.price), 0);
       },
       error: () => {
         this.router.navigateByUrl('/checkout');
