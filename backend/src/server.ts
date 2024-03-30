@@ -13,12 +13,7 @@ const app = express();
 
 // Middleware - JSON parsing
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: "*"
-  })
-);
+app.use(cors());
 
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
