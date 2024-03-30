@@ -10,11 +10,13 @@ import path from "path";
 dbConnect();
 
 const app = express();
+
+// Middleware - JSON parsing
 app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:4200",
+    origin: process.env.FRONTEND_URL || "http://localhost:4200",
   })
 );
 
