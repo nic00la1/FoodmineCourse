@@ -18,7 +18,7 @@ var app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     credentials: true,
-    origin: process.env.FRONTEND_URL || "http://localhost:4200",
+    origin: "https://foodmine-erhd.onrender.com" || "http://localhost:4200",
 }));
 app.use("/api/foods", food_router_1.default);
 app.use("/api/users", user_router_1.default);

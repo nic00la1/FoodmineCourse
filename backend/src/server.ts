@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL || "http://localhost:4200",
+    origin: "https://foodmine-erhd.onrender.com" || "http://localhost:4200",
   })
 );
 
