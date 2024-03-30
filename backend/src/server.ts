@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 dotenv.config();
-
 import express from "express";
 import cors from "cors";
 import foodRouter from "./routers/food.router";
@@ -19,14 +18,16 @@ app.use(
   })
 );
 
-// Serve Angular files
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
-
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter );
 
-const port = 5000; // default port to listen
+app.use(express.static('public/browser')); 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'browser', 'index.html'));
+});
+
+const port = process.env.PORT || 5000; // default port to listen
 app.listen(port, () => {
   console.log("Website served at http://localhost:" + port);
 });

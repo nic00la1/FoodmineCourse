@@ -19,12 +19,14 @@ app.use((0, cors_1.default)({
     credentials: true,
     origin: "http://localhost:4200",
 }));
-// Serve Angular files
-app.use(express_1.default.static(path_1.default.join(__dirname, 'frontend/dist')));
 app.use("/api/foods", food_router_1.default);
 app.use("/api/users", user_router_1.default);
 app.use("/api/orders", order_router_1.default);
-var port = 5000; // default port to listen
+app.use(express_1.default.static('public/browser'));
+app.get('*', function (req, res) {
+    res.sendFile(path_1.default.join(__dirname, 'public', 'browser', 'index.html'));
+});
+var port = process.env.PORT || 5000; // default port to listen
 app.listen(port, function () {
     console.log("Website served at http://localhost:" + port);
 });
